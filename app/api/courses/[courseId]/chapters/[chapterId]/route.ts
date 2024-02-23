@@ -130,14 +130,14 @@ export async function PATCH(
 				},
 			});
 
-			// if (existingMuxData) {
-			// 	await Video.Assets.del(existingMuxData.assetId);
-			// 	await db.muxData.delete({
-			// 		where: {
-			// 			id: existingMuxData.id,
-			// 		},
-			// 	});
-			// }
+			if (existingMuxData) {
+				await Video.Assets.del(existingMuxData.assetId);
+				await db.muxData.delete({
+					where: {
+						id: existingMuxData.id,
+					},
+				});
+			}
 
 			const asset = await Video.Assets.create({
 				input: values.videoUrl,
